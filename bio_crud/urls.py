@@ -21,5 +21,5 @@ urlpatterns = [
     # Add the line below
     path('', include('first_app.urls')),
     path('plants/', include('plants.urls')),
-    # path('animals/', include('animals.urls')),
+    path('animals/', include('animals.urls')),
 ]
