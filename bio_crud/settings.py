@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'bio_crud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bio-crud',
+        'NAME': 'env-crud',
     }
 }
 
