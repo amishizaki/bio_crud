@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from ..models.plant import Plant
-from ..serializers import PlantSerializer
+from ..serializers import PlantSerializer, PlantSortSerializer
 
 # Create your views here.
 #localhost:3000/plants/ get post
@@ -13,7 +13,7 @@ class PlantsView(APIView):
     serializer_class = PlantSerializer
     def get(self, request):
         plants = Plant.objects.all()
-        serializer = PlantSerializer(plants, many=True)
+        serializer = PlantSortSerializer(plants, many=True)
         return Response({'plants': serializer.data})
 
     def post(self, request):
@@ -30,7 +30,7 @@ class PlantDetailView(APIView):
     serializer_class = PlantSerializer
     def get(self, request, pk):
         plant = get_object_or_404(Plant, pk=pk)
-        serializer = PlantSerializer(plant)
+        serializer = PlantSortSerializer(plant)
         return Response({'plant': serializer.data})
 
     def patch(self, request, pk):

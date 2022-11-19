@@ -1,15 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from .serializers import AnimalSerializer
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Animal
+from .serializers import AnimalSerializer
 
 # Create your views here.
 #localhost:3000/animals/ get post
 class AnimalsView(APIView):
     """View class for animals/ for viewing all and creating"""
+    serializer_class = AnimalSerializer
     def get(self, request):
         animals = Animal.objects.all()
         serializer = AnimalSerializer(animals, many=True)
@@ -26,6 +27,7 @@ class AnimalsView(APIView):
 #localhost:3000/animals/:id get delete update
 class AnimalDetailView(APIView):
     """View class for animals/:pk for viewing a single animal, updating a single animal, or removing a single animal"""
+    serializer_class = AnimalSerializer
     def get(self, request, pk):
         animal = get_object_or_404(Animal, pk=pk)
         serializer = AnimalSerializer(animal)
