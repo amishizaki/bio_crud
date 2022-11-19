@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .serializers import PlantSerializer
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Plant
+from ..models.plant import Plant
+from ..serializers import PlantSerializer
 
 # Create your views here.
 #localhost:3000/plants/ get post
